@@ -128,6 +128,8 @@ ModelImporter:
     100240: plantas_hojaConEspinas_006
     100242: plantas_hojaLarga_010
     100244: plantas_hojaConEspinas_003
+    100246: plantas_hojaConEspinas_004
+    100248: plantas_hojaLarga_000
     400000: Cube
     400002: Cube_001
     400004: Cube_002
@@ -251,6 +253,8 @@ ModelImporter:
     400240: plantas_hojaConEspinas_006
     400242: plantas_hojaLarga_010
     400244: plantas_hojaConEspinas_003
+    400246: plantas_hojaConEspinas_004
+    400248: plantas_hojaLarga_000
     2100000: unnamed
     2100002: plantas_hojaConEspinas__plantas_hojaConEspinas_png
     2100004: plantas_hojaLarga__plantas_hojaLarga_png
@@ -376,6 +380,8 @@ ModelImporter:
     2300238: plantas_hojaConEspinas_006
     2300240: plantas_hojaLarga_010
     2300242: plantas_hojaConEspinas_003
+    2300244: plantas_hojaConEspinas_004
+    2300246: plantas_hojaLarga_000
     3300000: Cube
     3300002: Cube_001
     3300004: Cube_002
@@ -498,6 +504,8 @@ ModelImporter:
     3300238: plantas_hojaConEspinas_006
     3300240: plantas_hojaLarga_010
     3300242: plantas_hojaConEspinas_003
+    3300244: plantas_hojaConEspinas_004
+    3300246: plantas_hojaLarga_000
     4300000: Icosphere
     4300002: Cube_028
     4300004: Cylinder_030
@@ -620,6 +628,8 @@ ModelImporter:
     4300238: plantas_hojaConEspinas_006
     4300240: plantas_hojaLarga_010
     4300242: plantas_hojaConEspinas_003
+    4300244: plantas_hojaLarga_000
+    4300246: plantas_hojaConEspinas_004
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
