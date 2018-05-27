@@ -23,8 +23,8 @@ public class PlayerController : MonoBehaviour {
         //make sure you are reading something
         if(!(Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0))
         {
-            movementVector = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-            rb.velocity = (movementVector * movementSpeed * Time.fixedDeltaTime)+(new Vector3(0, rb.velocity.y, 0));
+            movementVector = transform.forward* Input.GetAxis("Vertical") + transform.right* Input.GetAxis("Horizontal");
+            rb.velocity = (movementVector.normalized * movementSpeed * Time.fixedDeltaTime)+(new Vector3(0, rb.velocity.y, 0));
             
         }
 
