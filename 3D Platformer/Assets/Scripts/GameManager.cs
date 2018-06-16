@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-	// Use this for initialization
+    public static GameManager instance = null;
+
+    public PlayerController Player;
 	void Start () {
 
         Cursor.lockState = CursorLockMode.Locked; 
 	}
-	
-	// Update is called once per frame
-	void Update () {
+    //set everything here first
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 }

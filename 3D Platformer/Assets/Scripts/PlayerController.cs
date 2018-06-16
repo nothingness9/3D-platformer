@@ -66,4 +66,9 @@ public class PlayerController : MonoBehaviour {
         movementVector.y = movementVector.y + (Physics.gravity.y * gravityScale);
         controller.Move(movementVector* Time.fixedDeltaTime);
     }
+
+    public bool IsGrounded()
+    {
+        return controller.isGrounded;
+    }
 }
