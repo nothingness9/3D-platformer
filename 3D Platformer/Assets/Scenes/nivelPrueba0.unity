@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43822688, g: 0.48625034, b: 0.5665283, a: 1}
+  m_IndirectSpecularColor: {r: 0.43822747, g: 0.4862507, b: 0.56652963, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1486,18 +1486,6 @@ Prefab:
     - target: {fileID: 1844817589100460, guid: 15508841dea479e448af96492b5eadfd, type: 2}
       propertyPath: m_Name
       value: plantas_hojaConEspinas_000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1844817589100460, guid: 15508841dea479e448af96492b5eadfd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4264790801006500, guid: 15508841dea479e448af96492b5eadfd, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.93192196
-      objectReference: {fileID: 0}
-    - target: {fileID: 4264790801006500, guid: 15508841dea479e448af96492b5eadfd, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.93192196
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15508841dea479e448af96492b5eadfd, type: 2}
@@ -8290,6 +8278,7 @@ Transform:
   - {fileID: 1954296103}
   - {fileID: 207556635}
   - {fileID: 1793768077}
+  - {fileID: 1402178138}
   m_Father: {fileID: 1319277987}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8844,10 +8833,6 @@ Prefab:
     - target: {fileID: 4404534194405640, guid: ad395b2b3ff85e94c90a192a0d94dfa2, type: 2}
       propertyPath: m_RootOrder
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4404534194405640, guid: ad395b2b3ff85e94c90a192a0d94dfa2, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 22.359001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ad395b2b3ff85e94c90a192a0d94dfa2, type: 2}
@@ -22232,20 +22217,79 @@ Prefab:
       propertyPath: m_Name
       value: plantas_hojaConEspinas_004
       objectReference: {fileID: 0}
-    - target: {fileID: 1910306864457702, guid: e983deffd1d962548a3916a4996fe51a, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: e983deffd1d962548a3916a4996fe51a, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1402178138 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4916647450798628, guid: 48271629824c0d64c8a3781f290d1a4b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1439294672}
+--- !u!1001 &1439294672
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 768060935}
+    m_Modifications:
+    - target: {fileID: 4916647450798628, guid: 48271629824c0d64c8a3781f290d1a4b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916647450798628, guid: 48271629824c0d64c8a3781f290d1a4b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916647450798628, guid: 48271629824c0d64c8a3781f290d1a4b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 13.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916647450798628, guid: 48271629824c0d64c8a3781f290d1a4b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000015450293
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916647450798628, guid: 48271629824c0d64c8a3781f290d1a4b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.03230637
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916647450798628, guid: 48271629824c0d64c8a3781f290d1a4b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000020193411
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916647450798628, guid: 48271629824c0d64c8a3781f290d1a4b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.99947804
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916647450798628, guid: 48271629824c0d64c8a3781f290d1a4b, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916647450798628, guid: 48271629824c0d64c8a3781f290d1a4b, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -3.703
+      objectReference: {fileID: 0}
+    - target: {fileID: 1754073321996410, guid: 48271629824c0d64c8a3781f290d1a4b, type: 2}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4504572278785616, guid: e983deffd1d962548a3916a4996fe51a, type: 2}
+    - target: {fileID: 4916647450798628, guid: 48271629824c0d64c8a3781f290d1a4b, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.530672
+      value: 7.6790085
       objectReference: {fileID: 0}
-    - target: {fileID: 4504572278785616, guid: e983deffd1d962548a3916a4996fe51a, type: 2}
+    - target: {fileID: 4916647450798628, guid: 48271629824c0d64c8a3781f290d1a4b, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 9.6228895
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916647450798628, guid: 48271629824c0d64c8a3781f290d1a4b, type: 2}
       propertyPath: m_LocalScale.z
-      value: 0.530672
+      value: 6.989259
+      objectReference: {fileID: 0}
+    - target: {fileID: 1754073321996410, guid: 48271629824c0d64c8a3781f290d1a4b, type: 2}
+      propertyPath: m_Name
+      value: plantaHojasLargas (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: e983deffd1d962548a3916a4996fe51a, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 48271629824c0d64c8a3781f290d1a4b, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1448010735
 GameObject:
@@ -23088,26 +23132,6 @@ Prefab:
     - target: {fileID: 4006917836557034, guid: 4bfdb2caa12758545a7b80f0204e718f, type: 2}
       propertyPath: m_RootOrder
       value: 23
-      objectReference: {fileID: 0}
-    - target: {fileID: 4006917836557034, guid: 4bfdb2caa12758545a7b80f0204e718f, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90.00001
-      objectReference: {fileID: 0}
-    - target: {fileID: 4006917836557034, guid: 4bfdb2caa12758545a7b80f0204e718f, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 97.91
-      objectReference: {fileID: 0}
-    - target: {fileID: 4006917836557034, guid: 4bfdb2caa12758545a7b80f0204e718f, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.40125012
-      objectReference: {fileID: 0}
-    - target: {fileID: 4006917836557034, guid: 4bfdb2caa12758545a7b80f0204e718f, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.40125018
-      objectReference: {fileID: 0}
-    - target: {fileID: 4006917836557034, guid: 4bfdb2caa12758545a7b80f0204e718f, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.4012502
       objectReference: {fileID: 0}
     - target: {fileID: 1694989828977578, guid: 4bfdb2caa12758545a7b80f0204e718f, type: 2}
       propertyPath: m_Name
@@ -25031,14 +25055,6 @@ Prefab:
     - target: {fileID: 1754073321996410, guid: 48271629824c0d64c8a3781f290d1a4b, type: 2}
       propertyPath: m_Name
       value: plantas_hojaLarga_000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1754073321996410, guid: 48271629824c0d64c8a3781f290d1a4b, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4916647450798628, guid: 48271629824c0d64c8a3781f290d1a4b, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 7.6790066
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 48271629824c0d64c8a3781f290d1a4b, type: 2}
