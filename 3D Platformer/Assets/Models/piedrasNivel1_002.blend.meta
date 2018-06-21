@@ -1,44 +1,16 @@
 fileFormatVersion: 2
-guid: 50392c4d7f39ab54ebcd7773854ebd6d
-timeCreated: 1528926722
+guid: 331fb5558e299954d91e27c85565fb62
+timeCreated: 1529534934
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Cylinder
-    100004: Cylinder_001
-    100006: Plane_002
-    100008: Plane_000
-    100010: Plane_001
-    100012: Plane_003
     400000: //RootNode
-    400002: Cylinder
-    400004: Cylinder_001
-    400006: Plane_002
-    400008: Plane_000
-    400010: Plane_001
-    400012: Plane_003
-    2100000: unnamed
-    2100002: None__New_Graph_basecolor_png
-    2300000: Cylinder
-    2300002: Cylinder_001
-    2300004: Plane_002
-    2300006: Plane_000
-    2300008: Plane_001
-    2300010: Plane_003
-    3300000: Cylinder
-    3300002: Cylinder_001
-    3300004: Plane_002
-    3300006: Plane_000
-    3300008: Plane_001
-    3300010: Plane_003
-    4300000: Cylinder_001
-    4300002: Cylinder
-    4300004: Plane_002
-    4300006: Plane_003
-    4300008: Plane_001
-    4300010: Plane_000
+    2100000: None__pierdas_diffuse_png
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Icosphere_cell_015
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
