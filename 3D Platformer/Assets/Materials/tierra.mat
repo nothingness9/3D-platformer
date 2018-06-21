@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: tierra
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: EFFECT_BUMP _DETAIL_MULX2 _NORMALMAP _SPECGLOSSMAP
+  m_ShaderKeywords: EFFECT_BUMP _DETAIL_MULX2 _METALLICGLOSSMAP _NORMALMAP _SPECGLOSSMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -19,11 +19,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: a25f00930822b714a99a7773a8820e11, type: 3}
+        m_Texture: {fileID: 2800000, guid: 28acc953437cd4a428883bd8677f124f, type: 3}
         m_Scale: {x: 5, y: 5}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
-        m_Texture: {fileID: 2800000, guid: da1fa4395627388468d769a02d179133, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3aac56270a0d2ee419fc24b62a3ac52c, type: 3}
         m_Scale: {x: 5, y: 5}
         m_Offset: {x: 0, y: 0}
     - _DetailMask:
@@ -47,11 +47,11 @@ Material:
         m_Scale: {x: 5, y: 5}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: da1fa4395627388468d769a02d179133, type: 3}
+        m_Texture: {fileID: 2800000, guid: a733ee37c6153e7448dc4a49dac0ae43, type: 3}
         m_Scale: {x: 5, y: 5}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 4cd90ef0ecfee8d4dbea4005793c5f61, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -72,7 +72,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _GlossMapScale: 0
+    - _GlossMapScale: 0.149
     - _Glossiness: 0
     - _GlossyReflections: 1
     - _Metallic: 0
