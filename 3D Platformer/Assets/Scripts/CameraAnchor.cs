@@ -21,8 +21,8 @@ public class CameraAnchor : MonoBehaviour {
 	void FixedUpdate () {
         // get the x position of the mouse & rotate the target
 
-        float vertical = Input.GetAxisRaw("Mouse Y") * rotateSpeed;
-        float horizontal = Input.GetAxisRaw("Mouse X") *rotateSpeed;
+        float vertical = Input.GetAxis("Mouse Y") * rotateSpeed;
+        float horizontal = Input.GetAxis("Mouse X") *rotateSpeed;
 
         target.transform.Rotate(0f,horizontal,0f);
 
