@@ -363,12 +363,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92edc1825e9b5994986b061452b2f362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 300
+  jumpForce: 500
   movementSpeed: 200
   ground:
     serializedVersion: 2
     m_Bits: 4294967295
-  gravityScale: 2
+  deathDistance: 7
+  gravityScale: 1.75
 --- !u!135 &135792182160767906
 SphereCollider:
   m_ObjectHideFlags: 1
