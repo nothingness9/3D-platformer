@@ -26,13 +26,15 @@ public class CameraAnchor : MonoBehaviour {
 
         target.transform.Rotate(0f,horizontal,0f);
 
+        
         if (!(GameManager.instance.Player.IsGrounded() && vertical <= 0f && target.transform.position.y >= transform.position.y))
         {
             pivot.Rotate(vertical, 0f, 0f);
-        }else
+        }
+        /*else
         {
             pivot.Rotate(0f, 0f, 0f);
-        }
+        }*/
 
         // move the camera based on the current rotation of the target 
         // and the original offset
@@ -40,10 +42,10 @@ public class CameraAnchor : MonoBehaviour {
         float deriseredXangle = pivot.eulerAngles.x;
 
         Quaternion rotation;
-
+        /*
         if (GameManager.instance.Player.IsGrounded() && vertical <= 0f && target.transform.position.y >= transform.position.y)
         {
-        }
+        }*/
 
         rotation = Quaternion.Euler(deriseredXangle, deriseredYangle, 0f);
         transform.position = target.transform.position + rotation * offset;
