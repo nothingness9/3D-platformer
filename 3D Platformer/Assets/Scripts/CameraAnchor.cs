@@ -27,7 +27,7 @@ public class CameraAnchor : MonoBehaviour {
         target.transform.Rotate(0f,horizontal,0f);
 
         
-        if (!(GameManager.instance.Player.IsGrounded() && vertical <= 0f && target.transform.position.y >= transform.position.y))
+        if (!(vertical <= 0f && target.transform.position.y >= transform.position.y))
         {
             pivot.Rotate(vertical, 0f, 0f);
         }

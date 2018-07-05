@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour {
     Rigidbody rb;
     public LayerMask ground;
 
-    public float deathDistance;
+    public float deathMultiplier;
 
     float currentVerticalDistance;
 
@@ -23,6 +23,14 @@ public class PlayerController : MonoBehaviour {
     Vector3 movementVector;
     bool grounded;
     bool jumping;
+
+    RaycastHit hit;
+
+    Vector3 lastPosition;
+    Transform lastPaltform;
+
+
+
     // Use this for initialization
     void Start () {
         //controller = GetComponent<CharacterController>();
@@ -44,7 +52,7 @@ public class PlayerController : MonoBehaviour {
     {
 
 
-        movementVector = new Vector3(0f, movementVector.y, 0f) + (transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")).normalized * movementSpeed;
+        movementVector = new Vector3(0f, movementVector.y, 0f) + (transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")).normalized * (movementSpeed/Time.fixedDeltaTime);
 
 
         
@@ -52,8 +60,9 @@ public class PlayerController : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.Space) && !jumping)
             {
-                movementVector = new Vector3(movementVector.x, jumpForce, movementVector.z);
+                movementVector = new Vector3(movementVector.x, jumpForce*2f/(Time.fixedDeltaTime), movementVector.z);
                 jumping = true;
+                lastPosition = transform.position;
                 //rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
             }
@@ -69,7 +78,7 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate ()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, 0.525f, ground);
+        grounded = Physics.Raycast(transform.position, Vector3.down, out hit, 0.525f, ground);
 
         if (grounded)
         {
@@ -80,8 +89,9 @@ public class PlayerController : MonoBehaviour {
             else if (!jumping)
             {
                 currentVerticalDistance = currentVerticalDistance - transform.position.y;
-                if (currentVerticalDistance >= deathDistance)
+                if (currentVerticalDistance >= deathMultiplier*jumpForce)
                 {
+                    transform.position = lastPosition;
                     print("you are already dead");
                 }
                 currentVerticalDistance = -1;
