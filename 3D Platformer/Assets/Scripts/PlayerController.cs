@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour {
     Rigidbody rb;
     public LayerMask ground;
 
+    public float groundDistance;
+
     public float deathMultiplier;
 
     float currentVerticalDistance;
@@ -26,6 +28,9 @@ public class PlayerController : MonoBehaviour {
 
     RaycastHit hit;
 
+    ///////////////////////////
+    //Falling control
+    bool falling;
     Vector3 lastPosition;
     Transform lastPaltform;
 
@@ -36,6 +41,7 @@ public class PlayerController : MonoBehaviour {
         //controller = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
         grounded= false;
+        falling = true;
         jumping = true;
         currentVerticalDistance = -1f;
 	}
@@ -82,6 +88,14 @@ public class PlayerController : MonoBehaviour {
 
         if (grounded)
         {
+            if (lastPaltform != hit.transform && !falling)
+            {
+                lastPaltform = hit.transform;
+            }
+            if (falling)
+            {
+                falling = false;
+            }
             if (jumping)
             {
                 jumping = false;
@@ -91,7 +105,7 @@ public class PlayerController : MonoBehaviour {
                 currentVerticalDistance = currentVerticalDistance - transform.position.y;
                 if (currentVerticalDistance >= deathMultiplier*jumpForce)
                 {
-                    transform.position = lastPosition;
+                    transform.position = lastPaltform.position + new Vector3(0f, groundDistance, 0f);
                     print("you are already dead");
                 }
                 currentVerticalDistance = -1;
@@ -101,6 +115,10 @@ public class PlayerController : MonoBehaviour {
         }
         else
         {
+            if (!falling)
+            {
+                falling = true;
+            }
             movementVector.y = movementVector.y + (Physics.gravity.y * gravityScale);
             if(movementVector.y<0f && currentVerticalDistance == -1f)
             {
