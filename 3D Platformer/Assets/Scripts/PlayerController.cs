@@ -84,7 +84,9 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate ()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, out hit, 0.525f, ground);
+        //(Physics.SphereCast(p1, charCtrl.height / 2, transform.forward, out hit, 10)
+        grounded = Physics.SphereCast(transform.position, groundDistance/2f, Vector3.down,out hit, groundDistance, ground) ;  
+            //Physics.Raycast(transform.position, Vector3.down, out hit, 0.525f, ground);
 
         if (grounded)
         {
@@ -160,5 +162,10 @@ public class PlayerController : MonoBehaviour {
     public bool IsGrounded()
     {
         return grounded;
+    }
+
+    void OnCollisionEnter( Collision hit)
+    {
+        print(hit.transform.name);
     }
 }
