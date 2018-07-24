@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour {
 
     public float groundDistance;
 
+    public float sphereDistance;
+
+    public float sphereRadious;
+
     public float deathMultiplier;
 
     float currentVerticalDistance;
@@ -27,6 +31,8 @@ public class PlayerController : MonoBehaviour {
     bool jumping;
 
     RaycastHit hit;
+
+    
 
     ///////////////////////////
     //Falling control
@@ -48,9 +54,10 @@ public class PlayerController : MonoBehaviour {
 
     void OnDrawGizmos()
     {
-        // Draw a yellow sphere at the transform's position
-
+        Gizmos.color = Color.red;
         Debug.DrawRay(transform.position, Vector3.down * 0.525f, Color.red);
+        Gizmos.DrawWireSphere(transform.position+ transform.up * -1 * sphereDistance, sphereRadious);
+       
     }
 	
 	// Update is called once per frame
@@ -58,7 +65,7 @@ public class PlayerController : MonoBehaviour {
     {
 
 
-        movementVector = new Vector3(0f, movementVector.y, 0f) + (transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")).normalized * (movementSpeed/Time.fixedDeltaTime);
+        movementVector = new Vector3(0f, movementVector.y, 0f) + (transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")).normalized * movementSpeed;
 
 
         
@@ -66,13 +73,19 @@ public class PlayerController : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.Space) && !jumping)
             {
-                movementVector = new Vector3(movementVector.x, jumpForce*2f/(Time.fixedDeltaTime), movementVector.z);
+                movementVector = new Vector3(movementVector.x, jumpForce, movementVector.z);
                 jumping = true;
                 lastPosition = transform.position;
                 //rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
             }
 
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            print(hit.transform);
         }
 
 
@@ -85,7 +98,7 @@ public class PlayerController : MonoBehaviour {
 	void FixedUpdate ()
     {
         //(Physics.SphereCast(p1, charCtrl.height / 2, transform.forward, out hit, 10)
-        grounded = Physics.SphereCast(transform.position, groundDistance/2f, Vector3.down,out hit, groundDistance, ground) ;  
+        grounded = Physics.SphereCast(transform.position, sphereRadious,transform.up*-1 ,out hit, sphereDistance, ground) ;  
             //Physics.Raycast(transform.position, Vector3.down, out hit, 0.525f, ground);
 
         if (grounded)
@@ -121,15 +134,17 @@ public class PlayerController : MonoBehaviour {
             {
                 falling = true;
             }
-            movementVector.y = movementVector.y + (Physics.gravity.y * gravityScale);
-            if(movementVector.y<0f && currentVerticalDistance == -1f)
+            //movementVector.y = movementVector.y + (Physics.gravity.y * gravityScale);
+            //movementVector.y = transform.position.y;
+            if (rb.velocity.y<0f && currentVerticalDistance == -1f)
             {
                 currentVerticalDistance = transform.position.y;
             }
         }
 
-        rb.velocity = movementVector * Time.fixedDeltaTime;
-
+        //rb.velocity = movementVector * Time.fixedDeltaTime;
+        //rb.position += movementVector * Time.fixedDeltaTime;
+        rb.MovePosition(transform.position + movementVector * Time.fixedDeltaTime);
 
 
 
@@ -166,6 +181,6 @@ public class PlayerController : MonoBehaviour {
 
     void OnCollisionEnter( Collision hit)
     {
-        print(hit.transform.name);
+        //print(hit.transform.name);
     }
 }
