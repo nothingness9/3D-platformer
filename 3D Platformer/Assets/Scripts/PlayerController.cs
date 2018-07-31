@@ -13,10 +13,6 @@ public class PlayerController : MonoBehaviour {
 
     public float groundDistance;
 
-    public float sphereDistance;
-
-    public float sphereRadious;
-
     public float deathMultiplier;
 
     float currentVerticalDistance;
@@ -30,7 +26,9 @@ public class PlayerController : MonoBehaviour {
     bool grounded;
     bool jumping;
 
-    RaycastHit hit;
+    public Vector3[] raycastPositions;
+
+    RaycastHit[] hit;
 
     
 
@@ -38,6 +36,7 @@ public class PlayerController : MonoBehaviour {
     //Falling control
     bool falling;
     Vector3 lastPosition;
+    Transform newPlatform;
     Transform lastPaltform;
 
 
@@ -45,6 +44,7 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //controller = GetComponent<CharacterController>();
+        hit = new RaycastHit[raycastPositions.Length];
         rb = GetComponent<Rigidbody>();
         grounded= false;
         falling = true;
@@ -55,8 +55,11 @@ public class PlayerController : MonoBehaviour {
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Debug.DrawRay(transform.position, Vector3.down * 0.525f, Color.red);
-        Gizmos.DrawWireSphere(transform.position+ transform.up * -1 * sphereDistance, sphereRadious);
+        foreach (Vector3 v in raycastPositions)
+        {
+            Debug.DrawRay(transform.position + v, transform.up * -1 * groundDistance, Color.red);
+        }
+        //Gizmos.DrawWireSphere(transform.position+ transform.up * -1 * sphereDistance, sphereRadious);
        
     }
 	
@@ -73,7 +76,7 @@ public class PlayerController : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.Space) && !jumping)
             {
-                movementVector = new Vector3(movementVector.x, jumpForce, movementVector.z);
+                movementVector = new Vector3(movementVector.x, jumpForce*2, movementVector.z);
                 jumping = true;
                 lastPosition = transform.position;
                 //rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -85,7 +88,7 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            print(hit.transform);
+            //print(hit.transform);
         }
 
 
@@ -98,14 +101,15 @@ public class PlayerController : MonoBehaviour {
 	void FixedUpdate ()
     {
         //(Physics.SphereCast(p1, charCtrl.height / 2, transform.forward, out hit, 10)
-        grounded = Physics.SphereCast(transform.position, sphereRadious,transform.up*-1 ,out hit, sphereDistance, ground) ;  
+        //Physics.SphereCast(transform.position, sphereRadious, transform.up * -1, out hit, sphereDistance, ground) 
+        grounded=Grounded();  
             //Physics.Raycast(transform.position, Vector3.down, out hit, 0.525f, ground);
 
         if (grounded)
         {
-            if (lastPaltform != hit.transform && !falling)
+            if (lastPaltform != newPlatform && !falling)
             {
-                lastPaltform = hit.transform;
+                lastPaltform = newPlatform;
             }
             if (falling)
             {
@@ -144,8 +148,8 @@ public class PlayerController : MonoBehaviour {
 
         //rb.velocity = movementVector * Time.fixedDeltaTime;
         //rb.position += movementVector * Time.fixedDeltaTime;
-        rb.MovePosition(transform.position + movementVector * Time.fixedDeltaTime);
-
+        //rb.MovePosition(transform.position + movementVector * Time.fixedDeltaTime);
+        transform.position += movementVector * Time.fixedDeltaTime;
 
 
 
@@ -172,6 +176,23 @@ public class PlayerController : MonoBehaviour {
 
         //movementVector.y = movementVector.y + (Physics.gravity.y * gravityScale);
         //controller.Move(movementVector* Time.smoothDeltaTime);
+    }
+
+    private bool Grounded()
+    {
+        bool res = false;
+        int i = 0;
+        while (i < hit.Length && !res)
+        {
+            res=Physics.Raycast(transform.position+raycastPositions[i], transform.up*-1, out hit[i], groundDistance, ground);
+            if (res)
+            {
+                newPlatform = hit[i].transform;
+            }
+            i++;
+        }
+
+        return res;
     }
 
     public bool IsGrounded()

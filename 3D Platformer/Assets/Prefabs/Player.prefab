@@ -369,10 +369,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1536
   groundDistance: 0.525
-  sphareDistance: 0
-  sphareRadious: 0.525
+  sphereDistance: 0
+  sphereRadious: 0
   deathMultiplier: 1
   gravityScale: 1
+  raycastPositions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0.5, y: 0, z: 0}
+  - {x: -0.5, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0.5}
+  - {x: 0, y: 0, z: -0.5}
 --- !u!135 &135001114334040126
 SphereCollider:
   m_ObjectHideFlags: 1
