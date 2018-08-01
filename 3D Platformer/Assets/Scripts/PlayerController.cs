@@ -19,8 +19,6 @@ public class PlayerController : MonoBehaviour {
 
     public float gravityScale;
 
-    CharacterController controller;
-
 
     Vector3 movementVector;
     bool grounded;
@@ -39,7 +37,14 @@ public class PlayerController : MonoBehaviour {
     Transform newPlatform;
     Transform lastPaltform;
 
+    ///////////////////////////
+    // Interaction variables
+    ///////////////////////////
 
+    // Interaction variables
+    public InteractionDetector interaction;
+
+    public InteractiveObject interactableObject;
 
     // Use this for initialization
     void Start () {
@@ -62,8 +67,14 @@ public class PlayerController : MonoBehaviour {
         //Gizmos.DrawWireSphere(transform.position+ transform.up * -1 * sphereDistance, sphereRadious);
        
     }
-	
-	// Update is called once per frame
+    void Awake()
+    {
+
+        interaction.SetParent(this);
+        
+    }
+
+    // Update is called once per frame
     void Update()
     {
 
