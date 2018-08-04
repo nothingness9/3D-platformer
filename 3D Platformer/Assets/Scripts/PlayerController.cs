@@ -5,25 +5,32 @@ using UnityEngine;
 
 
 public class PlayerController : MonoBehaviour {
-
+    [Header("Movement Settings")]
+    [Tooltip("How many units the character can jump")]
     public float jumpHeight;
+    [Tooltip("Max distance that the player can survive. Multiplies jumpHeight with this to verify if player is death")]
+    public float deathMultiplier;
+    //public float gravityScale;
+    [Tooltip("How many units per second the player moves")]
     public float movementSpeed;
     Rigidbody rb;
+    [Header("Ground Settings")]
+    [Tooltip("Every layer checked here will count as aht the player can walk over")]
     public LayerMask ground;
-
+    [Tooltip("the distance from the middle of the player's model to the ground")]
     public float groundDistance;
 
-    public float deathMultiplier;
+    
 
     float currentVerticalDistance;
 
-    public float gravityScale;
+    
 
 
     Vector3 movementVector;
     bool grounded;
     bool jumping;
-
+    [Tooltip("Points where the code checks if the player is touching the ground")]
     public Vector3[] raycastPositions;
 
     RaycastHit[] hit;
@@ -79,7 +86,7 @@ public class PlayerController : MonoBehaviour {
     {
 
 
-        movementVector = new Vector3(0f, 0f, 0f) + (transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")).normalized * movementSpeed;
+        movementVector = new Vector3(0f, rb.velocity.y, 0f) + (transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")).normalized * movementSpeed;
 
 
         
@@ -88,8 +95,11 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Space) && !jumping)
             {
                 //movementVector = new Vector3(movementVector.x, jumpForce*2, movementVector.z);
-                rb.velocity = new Vector3(rb.velocity.x, Mathf.Sqrt(-2 * jumpHeight / gravityScale * Physics.gravity.y),rb.velocity.z);
+                print(rb.velocity);
+                rb.velocity = new Vector3(rb.velocity.x, Mathf.Sqrt(-2 * jumpHeight  * Physics.gravity.y),rb.velocity.z);
+                print(rb.velocity);
                 jumping = true;
+                grounded = false;
                 lastPosition = transform.position;
                 //rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
@@ -114,7 +124,10 @@ public class PlayerController : MonoBehaviour {
     {
         //(Physics.SphereCast(p1, charCtrl.height / 2, transform.forward, out hit, 10)
         //Physics.SphereCast(transform.position, sphereRadious, transform.up * -1, out hit, sphereDistance, ground) 
-        grounded=Grounded();  
+        if (falling)
+        {
+            grounded = Grounded();
+        }
             //Physics.Raycast(transform.position, Vector3.down, out hit, 0.525f, ground);
 
         if (grounded)
@@ -140,7 +153,7 @@ public class PlayerController : MonoBehaviour {
                     print("you are already dead");
                 }
                 currentVerticalDistance = -1;
-                movementVector = new Vector3(movementVector.x, 0f, movementVector.z);
+                //movementVector = new Vector3(movementVector.x, rb.velocity.y, movementVector.z);
             }
 
         }
@@ -152,16 +165,17 @@ public class PlayerController : MonoBehaviour {
             }
             //movementVector.y = movementVector.y + (Physics.gravity.y * gravityScale);
             //movementVector.y = transform.position.y;
+            //print(rb.velocity);
             if (rb.velocity.y<0f && currentVerticalDistance == -1f)
             {
                 currentVerticalDistance = transform.position.y;
             }
         }
 
-        //rb.velocity = movementVector * Time.fixedDeltaTime;
+        rb.velocity = movementVector ;
         //rb.position += movementVector * Time.fixedDeltaTime;
         //rb.MovePosition(transform.position + movementVector * Time.fixedDeltaTime);
-        transform.position += movementVector * Time.fixedDeltaTime;
+        //transform.position += movementVector * Time.fixedDeltaTime;
 
 
 
