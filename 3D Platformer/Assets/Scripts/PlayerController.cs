@@ -86,8 +86,11 @@ public class PlayerController : MonoBehaviour {
     {
 
 
-        movementVector = new Vector3(0f, rb.velocity.y, 0f) + (transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")).normalized * movementSpeed;
-
+        movementVector =  (transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")).normalized * movementSpeed;
+        if (movementVector == Vector3.zero && rb.velocity.x!=0f && rb.velocity.y != 0f)
+        {
+            rb.velocity = new Vector3( 0f, rb.velocity.y, 0f);
+        }
 
         
         if (grounded)
@@ -95,9 +98,9 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Space) && !jumping)
             {
                 //movementVector = new Vector3(movementVector.x, jumpForce*2, movementVector.z);
-                print(rb.velocity);
-                rb.velocity = new Vector3(rb.velocity.x, Mathf.Sqrt(-2 * jumpHeight  * Physics.gravity.y),rb.velocity.z);
-                print(rb.velocity);
+                
+                rb.velocity += Vector3.up * Mathf.Sqrt(-2 * jumpHeight  * Physics.gravity.y);
+                
                 jumping = true;
                 grounded = false;
                 lastPosition = transform.position;
@@ -172,9 +175,9 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-        rb.velocity = movementVector ;
+        //rb.velocity = movementVector ;
         //rb.position += movementVector * Time.fixedDeltaTime;
-        //rb.MovePosition(transform.position + movementVector * Time.fixedDeltaTime);
+        rb.MovePosition(transform.position + movementVector * Time.fixedDeltaTime);
         //transform.position += movementVector * Time.fixedDeltaTime;
 
 
