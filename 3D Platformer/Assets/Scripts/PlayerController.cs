@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    public float jumpForce;
+    public float jumpHeight;
     public float movementSpeed;
     Rigidbody rb;
     public LayerMask ground;
@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour {
     {
 
 
-        movementVector = new Vector3(0f, movementVector.y, 0f) + (transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")).normalized * movementSpeed;
+        movementVector = new Vector3(0f, 0f, 0f) + (transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")).normalized * movementSpeed;
 
 
         
@@ -87,7 +87,8 @@ public class PlayerController : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.Space) && !jumping)
             {
-                movementVector = new Vector3(movementVector.x, jumpForce*2, movementVector.z);
+                //movementVector = new Vector3(movementVector.x, jumpForce*2, movementVector.z);
+                rb.velocity = new Vector3(rb.velocity.x, Mathf.Sqrt(-2 * jumpHeight / gravityScale * Physics.gravity.y),rb.velocity.z);
                 jumping = true;
                 lastPosition = transform.position;
                 //rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -133,7 +134,7 @@ public class PlayerController : MonoBehaviour {
             else if (!jumping)
             {
                 currentVerticalDistance = currentVerticalDistance - transform.position.y;
-                if (currentVerticalDistance >= deathMultiplier*jumpForce)
+                if (currentVerticalDistance >= deathMultiplier*jumpHeight)
                 {
                     transform.position = lastPaltform.position + new Vector3(0f, groundDistance, 0f);
                     print("you are already dead");
