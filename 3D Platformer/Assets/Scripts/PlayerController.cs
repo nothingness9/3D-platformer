@@ -95,14 +95,13 @@ public class PlayerController : MonoBehaviour {
         
         if (grounded)
         {
-            if (Input.GetKeyDown(KeyCode.Space) && !jumping)
+            if (Input.GetKeyDown(KeyCode.Space) && grounded)
             {
                 //movementVector = new Vector3(movementVector.x, jumpForce*2, movementVector.z);
                 
                 rb.velocity += Vector3.up * Mathf.Sqrt(-2 * jumpHeight  * Physics.gravity.y);
                 
-                jumping = true;
-                grounded = false;
+                //jumping = true;
                 lastPosition = transform.position;
                 //rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
@@ -127,37 +126,32 @@ public class PlayerController : MonoBehaviour {
     {
         //(Physics.SphereCast(p1, charCtrl.height / 2, transform.forward, out hit, 10)
         //Physics.SphereCast(transform.position, sphereRadious, transform.up * -1, out hit, sphereDistance, ground) 
-        if (falling)
-        {
+        
             grounded = Grounded();
-        }
             //Physics.Raycast(transform.position, Vector3.down, out hit, 0.525f, ground);
 
         if (grounded)
         {
-            if (lastPaltform != newPlatform && !falling)
-            {
-                lastPaltform = newPlatform;
-            }
+           
             if (falling)
             {
-                falling = false;
-            }
-            if (jumping)
-            {
-                jumping = false;
-            }
-            else if (!jumping)
-            {
+                
                 currentVerticalDistance = currentVerticalDistance - transform.position.y;
-                if (currentVerticalDistance >= deathMultiplier*jumpHeight)
+                if (currentVerticalDistance >= deathMultiplier * jumpHeight)
                 {
                     transform.position = lastPaltform.position + new Vector3(0f, groundDistance, 0f);
                     print("you are already dead");
                 }
                 currentVerticalDistance = -1;
+                falling = false;
+            }
+            else if (!falling)
+            {
+                
                 //movementVector = new Vector3(movementVector.x, rb.velocity.y, movementVector.z);
             }
+
+            
 
         }
         else
@@ -217,6 +211,11 @@ public class PlayerController : MonoBehaviour {
             if (res)
             {
                 newPlatform = hit[i].transform;
+                if (lastPaltform != newPlatform && !falling)
+                {
+
+                    lastPaltform = newPlatform;
+                }
             }
             i++;
         }

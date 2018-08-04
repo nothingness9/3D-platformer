@@ -395,13 +395,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpHeight: 3
+  gravity: 10
+  deathMultiplier: 3
   movementSpeed: 5
   ground:
     serializedVersion: 2
     m_Bits: 1536
   groundDistance: 0.525
-  deathMultiplier: 3
-  gravityScale: 1
   raycastPositions:
   - {x: 0, y: 0, z: 0}
   - {x: 0.5, y: 0, z: 0}
